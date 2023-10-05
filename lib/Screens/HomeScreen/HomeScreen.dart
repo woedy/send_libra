@@ -437,17 +437,33 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                                                 SizedBox(
                                                                   width: 10,
                                                                 ),
-                                                                Container(
-                                                                  height: 78,
-                                                                  width: 78,
-                                                                  decoration: BoxDecoration(
-                                                                      color: libraLight.withOpacity(0.3),
-                                                                      borderRadius: BorderRadius.circular(15)
+
+                                                                if(receivers.data[index].nickname == "")...[
+                                                                  Container(
+                                                                    height: 78,
+                                                                    width: 78,
+                                                                    decoration: BoxDecoration(
+                                                                        color: libraLight.withOpacity(0.3),
+                                                                        borderRadius: BorderRadius.circular(15)
+                                                                    ),
+                                                                    child: Center(
+                                                                      child: Text(receivers.data[index].fname.toString().substring(0, 1) + receivers.data[index].lname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                                                    ),
                                                                   ),
-                                                                  child: Center(
-                                                                    child: Text(receivers.data[index].fname.toString().substring(0, 1) + receivers.data[index].lname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                                                ]else...[
+                                                                  Container(
+                                                                    height: 78,
+                                                                    width: 78,
+                                                                    decoration: BoxDecoration(
+                                                                        color: libraLight.withOpacity(0.3),
+                                                                        borderRadius: BorderRadius.circular(15)
+                                                                    ),
+                                                                    child: Center(
+                                                                      child: Text(receivers.data[index].nickname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                                                    ),
                                                                   ),
-                                                                ),
+                                                                ]
+
                                                               ],
                                                             ),
                                                           );

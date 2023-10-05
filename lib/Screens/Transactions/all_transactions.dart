@@ -44,8 +44,9 @@ class _AllTransactionsState extends State<AllTransactions> with SingleTickerProv
   Future<AllTransactionsModel>? _futureGetAllTransactions;
   AnimationController? _controller;
 
-  TextEditingController _searchController = TextEditingController();
-  List<Data> _filteredTransactions = [];
+  TextEditingController searchController = TextEditingController(); // Add this line
+
+
 
   @override
   void initState() {
@@ -59,15 +60,7 @@ class _AllTransactionsState extends State<AllTransactions> with SingleTickerProv
 
   }
 
-  void _filterTransactions(String query, data) {
-    _filteredTransactions.clear();
-    if (query.isEmpty) {
-      _filteredTransactions.addAll(data.data!);
-    } else {
-      _filteredTransactions.addAll(data.data!.where((Data transaction) =>
-          transaction.benefName!.toLowerCase().contains(query.toLowerCase())));
-    }
-  }
+
 
 
   @override
@@ -226,6 +219,7 @@ class _AllTransactionsState extends State<AllTransactions> with SingleTickerProv
                                                   border: Border.all(color: Colors.white.withOpacity(0.1))
                                               ),
                                               child: TextFormField(
+                                                controller: searchController, // Connect the controller
 
                                                 style: TextStyle(color: Colors.white),
                                                 decoration: InputDecoration(
@@ -248,12 +242,11 @@ class _AllTransactionsState extends State<AllTransactions> with SingleTickerProv
                                                 autofocus: false,
 
 
-                                                controller: _searchController,
                                                 //initialValue: " ",
 
                                                 onChanged: (query) {
                                                   setState(() {
-                                                    _filterTransactions(query, snapshot.data!);
+
                                                   });
                                                 },
                                               ),
@@ -264,121 +257,107 @@ class _AllTransactionsState extends State<AllTransactions> with SingleTickerProv
                                           ],
                                         ),
 
-                                       if(_filteredTransactions.isEmpty)...[
-                                         Expanded(
-                                             child: Center(
-                                               child: Column(
+                                        Expanded(
+                                          child: ListView.builder(
+                                              itemCount: data.data!.length,
+                                              itemBuilder: (context, index) {
+                                                if (searchController.text.isEmpty || data.data![index].benefName!.toLowerCase().contains(searchController.text.toLowerCase())) {
+                                                  // Only show items that match the search query
+                                                  return  Column(
+                                                    children: [
+                                                      InkWell(
+                                                        onTap: () {
+                                                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => TransactionDetailsScreen(data: data.data![index])));
 
-                                                 children: [
-                                                   Icon(Icons.history, size: 50, color: Colors.white,),
-                                                   SizedBox(
-                                                     height:20,
-                                                   ),
-                                                   Text("No Transactions Available")
-                                                 ],
-
-                                               ),
-                                             )
-                                         )
-                                       ]else...[
-                                         Expanded(
-                                           child: ListView.builder(
-                                               itemCount: _filteredTransactions.length,
-                                               itemBuilder: (context, index) {
-                                                 return  Column(
-                                                   children: [
-                                                     InkWell(
-                                                       onTap: () {
-                                                         Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => TransactionDetailsScreen(data: _filteredTransactions[index])));
-
-                                                       },
-                                                       child: Container(
-                                                         padding: EdgeInsets.all(10),
-                                                         decoration: BoxDecoration(
-                                                             borderRadius: BorderRadius.circular(20),
-                                                             color: Colors.white
-                                                         ),
-                                                         child: Column(
-                                                           crossAxisAlignment: CrossAxisAlignment.start,
-                                                           children: [
-                                                             Row(
-                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                               crossAxisAlignment: CrossAxisAlignment.start,
-                                                               children: [
-                                                                 Row(
-                                                                   children: [
-                                                                     Container(
-                                                                       height: 44,
-                                                                       width: 44,
-                                                                       decoration: BoxDecoration(
-                                                                           color: libraPrimary,
-                                                                           borderRadius: BorderRadius.circular(10)
-                                                                       ),
-                                                                       child: Center(
-                                                                         child: Text(_filteredTransactions[index].benefName.toString().substring(0, 1)),
-                                                                       ),
-                                                                     ),
+                                                        },
+                                                        child: Container(
+                                                          padding: EdgeInsets.all(10),
+                                                          decoration: BoxDecoration(
+                                                              borderRadius: BorderRadius.circular(20),
+                                                              color: Colors.white
+                                                          ),
+                                                          child: Column(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                children: [
+                                                                  Row(
+                                                                    children: [
+                                                                      Container(
+                                                                        height: 44,
+                                                                        width: 44,
+                                                                        decoration: BoxDecoration(
+                                                                            color: libraPrimary,
+                                                                            borderRadius: BorderRadius.circular(10)
+                                                                        ),
+                                                                        child: Center(
+                                                                          child: Text(data.data![index].benefName.toString().substring(0, 1)),
+                                                                        ),
+                                                                      ),
 
 
-                                                                     SizedBox(
-                                                                       width: 10,
-                                                                     ),
-                                                                     Column(
-                                                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                                                       children: [
-                                                                         Text(_filteredTransactions[index].benefName.toString(), style: TextStyle(fontSize: 15, color: libraPrimary, fontWeight: FontWeight.w500),),
-                                                                         Text(DateFormat('dd/MM/yyyy').format(DateTime.parse(_filteredTransactions[index].creationDate.toString())), style: TextStyle(fontSize: 9, color: libraPrimary, fontWeight: FontWeight.w500),),
-                                                                       ],
-                                                                     )
-                                                                   ],
-                                                                 ),
-                                                                 Text("-\£" + _filteredTransactions[index].sourceAmount.toString(), style: TextStyle(fontSize: 25, color: libraPrimary, fontWeight: FontWeight.w500),),
+                                                                      SizedBox(
+                                                                        width: 10,
+                                                                      ),
+                                                                      Column(
+                                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(data.data![index].benefName.toString(), style: TextStyle(fontSize: 15, color: libraPrimary, fontWeight: FontWeight.w500),),
+                                                                          Text(DateFormat('dd/MM/yyyy').format(DateTime.parse(data.data![index].creationDate.toString())), style: TextStyle(fontSize: 9, color: libraPrimary, fontWeight: FontWeight.w500),),
+                                                                        ],
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                  Text("-\£" + data.data![index].sourceAmount.toString(), style: TextStyle(fontSize: 25, color: libraPrimary, fontWeight: FontWeight.w500),),
 
 
-                                                               ],
-                                                             ),
-                                                             SizedBox(
-                                                               height: 20,
-                                                             ),
-                                                             Row(
-                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                               children: [
-                                                                 Container(
-                                                                     padding: EdgeInsets.all(10),
-                                                                     decoration: BoxDecoration(
-                                                                         borderRadius: BorderRadius.circular(20),
-                                                                         color: Colors.green
-                                                                     ),
-                                                                     child: Text(_filteredTransactions[index].status.toString(), style: TextStyle(fontSize: 9, color: Colors.white, fontWeight: FontWeight.w500),)),
-                                                                 if(_filteredTransactions[index].paymentMethod == "41" && _filteredTransactions[index].status == "PENDING_CLEARANCE")...[
+                                                                ],
+                                                              ),
+                                                              SizedBox(
+                                                                height: 20,
+                                                              ),
+                                                              Row(
+                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                children: [
+                                                                  Container(
+                                                                      padding: EdgeInsets.all(10),
+                                                                      decoration: BoxDecoration(
+                                                                          borderRadius: BorderRadius.circular(20),
+                                                                          color: Colors.green
+                                                                      ),
+                                                                      child: Text(data.data![index].status.toString(), style: TextStyle(fontSize: 9, color: Colors.white, fontWeight: FontWeight.w500),)),
+                                                                  if(data.data![index].paymentMethod == "41" && data.data![index].status == "PENDING_CLEARANCE")...[
 
-                                                                   Container(
-                                                                       padding: EdgeInsets.all(10),
-                                                                       decoration: BoxDecoration(
-                                                                           borderRadius: BorderRadius.circular(20),
-                                                                           color: Colors.red
-                                                                       ),
-                                                                       child: Text("Pay Now", style: TextStyle(fontSize: 9, color: Colors.white, fontWeight: FontWeight.w500),)),
+                                                                    Container(
+                                                                        padding: EdgeInsets.all(10),
+                                                                        decoration: BoxDecoration(
+                                                                            borderRadius: BorderRadius.circular(20),
+                                                                            color: Colors.red
+                                                                        ),
+                                                                        child: Text("Pay Now", style: TextStyle(fontSize: 9, color: Colors.white, fontWeight: FontWeight.w500),)),
 
-                                                                 ]
-                                                               ],
-                                                             ),
-                                                           ],
-                                                         ),
-                                                       ),
-                                                     ),
-                                                     SizedBox(
-                                                       height: 10,
-                                                     )
+                                                                  ]
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10,
+                                                      )
 
 
-                                                   ],
-                                                 );
-                                               }
-                                           ),
-                                         )
-                                       ],
+                                                    ],
+                                                  );
+                                                }
+                                                return SizedBox.shrink(); // Hide non-matching items
+                                              }
 
+                                          ),
+                                        )
 
 
 

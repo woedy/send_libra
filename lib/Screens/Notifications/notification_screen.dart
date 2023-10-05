@@ -61,7 +61,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                      itemCount: 20,
+                      itemCount: 0,
                       itemBuilder: (context, index) {
                         return  ListTile(
                           title: Text("You sent \£ 500 to Sandra Mensah", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),

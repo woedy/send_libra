@@ -173,10 +173,17 @@ class _LoadingVerificationDialog1State extends State<LoadingVerificationDialog1>
                       )
                     ],
                   ),
-                  Image(
-                    image: AssetImage('assets/images/mtn2.png',), fit: BoxFit.cover,
+                  Container(
                     height: 59,
                     width: 59,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        image: AssetImage('assets/launcher/libra_launcher.png',),
+                        fit: BoxFit.cover
+                      )
+                    ),
+
                   ),
                 ],
               ),
