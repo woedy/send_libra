@@ -277,6 +277,7 @@ class _AllReceiversScreenState extends State<AllReceiversScreen> with SingleTick
                                         beneficiary_id: data.data![index].beneficiaryId,
                                         fname: data.data![index].fname,
                                         lname: data.data![index].lname,
+                                        nickname: data.data![index].nickname,
                                         phone: data.data![index].mobile,
                                         avatar: data.data![index].avatarContent!.trim().toString(),
                                       )));
@@ -289,22 +290,41 @@ class _AllReceiversScreenState extends State<AllReceiversScreen> with SingleTick
                                         Row(
                                           children: [
                                             if(data.data![index].avatar == "")...[
-                                              Container(
-                                                height: 82,
-                                                width: 82,
-                                                //padding: EdgeInsets.all(25),
-                                                decoration: BoxDecoration(
-                                                    color: clay.withOpacity(0.3),
-                                                    borderRadius: BorderRadius.circular(10)
 
+                                              if(data.data![index].nickname == "")...[
+                                                Container(
+                                                  height: 82,
+                                                  width: 82,
+                                                  //padding: EdgeInsets.all(25),
+                                                  decoration: BoxDecoration(
+                                                      color: clay.withOpacity(0.3),
+                                                      borderRadius: BorderRadius.circular(10)
+
+                                                  ),
+                                                  child: Center(child: Text(
+                                                    data.data![index].fname.toString().substring(0, 1)
+                                                        + " " +
+                                                        data.data![index].lname.toString().substring(0, 1),
+                                                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)
+                                                    ,)),
                                                 ),
-                                                child: Center(child: Text(
-                                                  data.data![index].fname.toString().substring(0, 1)
-                                                      + " " +
-                                                      data.data![index].lname.toString().substring(0, 1),
-                                                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)
-                                                  ,)),
-                                              ),
+                                              ]else...[
+                                                Container(
+                                                  height: 82,
+                                                  width: 82,
+                                                  //padding: EdgeInsets.all(25),
+                                                  decoration: BoxDecoration(
+                                                      color: clay.withOpacity(0.3),
+                                                      borderRadius: BorderRadius.circular(10)
+
+                                                  ),
+                                                  child: Center(child: Text(
+                                                    data.data![index].nickname.toString().substring(0, 1),
+                                                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)
+                                                    ,)),
+                                                ),
+                                              ]
+
                                             ]else...[
                                               Container(
                                                 height: 82,
@@ -324,7 +344,12 @@ class _AllReceiversScreenState extends State<AllReceiversScreen> with SingleTick
                                             SizedBox(
                                                 width: 20
                                             ),
-                                            Text(data.data![index].fname.toString() + " " + data.data![index].lname.toString(), style: (TextStyle(fontSize: 15,)),),
+                                            if(data.data![index].nickname == "")...[
+                                              Text(data.data![index].fname.toString() + " " + data.data![index].lname.toString(), style: (TextStyle(fontSize: 15,)),),
+                                            ]else...[
+                                              Text(data.data![index].nickname.toString(), style: (TextStyle(fontSize: 15,)),),
+
+                                            ]
                                           ],
                                         ),
                                         Icon(Icons.arrow_forward_ios, color: Colors.white, size: 12,)

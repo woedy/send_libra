@@ -15,12 +15,13 @@ class SendMoneyScreen extends StatefulWidget {
   final beneficiary_id;
   final fname;
   final lname;
+  final nickname;
   final phone;
   final avatar;
 
 
 
-  const SendMoneyScreen({Key? key, required this.beneficiary_id, required this.fname, required this.lname, required this.phone, required this.avatar}) : super(key: key);
+  const SendMoneyScreen({Key? key, required this.beneficiary_id, required this.fname, required this.lname,required this.nickname, required this.phone, required this.avatar}) : super(key: key);
 
   @override
   State<SendMoneyScreen> createState() => _SendMoneyScreenState();
@@ -94,17 +95,32 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> with SingleTickerProv
                                   children: [
 
                                     if(widget.avatar == "")...[
-                                      Container(
-                                        height: 59,
-                                        width: 59,
-                                        decoration: BoxDecoration(
-                                            color: libraPrimary,
-                                            borderRadius: BorderRadius.circular(10)
+                                      if(widget.nickname == "")...[
+                                        Container(
+                                          height: 59,
+                                          width: 59,
+                                          decoration: BoxDecoration(
+                                              color: libraPrimary,
+                                              borderRadius: BorderRadius.circular(10)
+                                          ),
+                                          child: Center(
+                                            child: Text(widget.fname.toString().substring(0, 1) + widget.lname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                          ),
                                         ),
-                                        child: Center(
-                                          child: Text(widget.fname.toString().substring(0, 1) + widget.lname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                      ]else...[
+                                        Container(
+                                          height: 59,
+                                          width: 59,
+                                          decoration: BoxDecoration(
+                                              color: libraPrimary,
+                                              borderRadius: BorderRadius.circular(10)
+                                          ),
+                                          child: Center(
+                                            child: Text(widget.nickname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                          ),
                                         ),
-                                      ),
+                                      ]
+
                                     ]else...[
                                       Container(
                                         height: 59,
@@ -134,7 +150,12 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> with SingleTickerProv
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
 
-                                        Text(widget.fname.toString() + " " + widget.lname.toString(), style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white),),
+                                        if(widget.nickname == "")...[
+                                          Text(widget.fname.toString() + " " + widget.lname.toString(), style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white),),
+                                        ]else...[
+                                          Text(widget.nickname.toString(), style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white),),
+
+                                        ],
                                         SizedBox(
                                           height: 5,
                                         ),

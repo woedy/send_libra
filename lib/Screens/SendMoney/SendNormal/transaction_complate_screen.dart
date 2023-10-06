@@ -155,7 +155,7 @@ class _TransactionCompleteScreenState extends State<TransactionCompleteScreen>  
                             ],
                           ),
                           Image(
-                            image: AssetImage('assets/images/mtn2.png',), fit: BoxFit.cover,
+                            image: AssetImage('assets/launcher/libra_launcher.png',), fit: BoxFit.cover,
                             height: 59,
                             width: 59,
                           ),
@@ -215,7 +215,7 @@ class _TransactionCompleteScreenState extends State<TransactionCompleteScreen>  
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Mtn Mobile Money", style: TextStyle(fontSize: 20, ),),
+                              //Text("Mtn Mobile Money", style: TextStyle(fontSize: 20, ),),
                               SizedBox(
                                 height: 10,
                               ),
@@ -224,7 +224,7 @@ class _TransactionCompleteScreenState extends State<TransactionCompleteScreen>  
                           ),
 
                           Image(
-                            image: AssetImage('assets/images/mtn2.png',), fit: BoxFit.cover,
+                            image: AssetImage('assets/launcher/libra_launcher.png',), fit: BoxFit.cover,
                             height: 59,
                             width: 59,
                           ),

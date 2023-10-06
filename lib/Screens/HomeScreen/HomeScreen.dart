@@ -426,6 +426,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                                                 beneficiary_id: receivers.data![index].beneficiaryId,
                                                                 fname: receivers.data![index].fname,
                                                                 lname: receivers.data![index].lname,
+                                                                nickname: receivers.data![index].nickname,
                                                                 phone: receivers.data![index].mobile,
                                                                 avatar: receivers.data![index].avatarContent.trim().toString(),
                                                               )));

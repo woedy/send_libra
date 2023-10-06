@@ -245,7 +245,7 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> wit
 
                                   Image(
                                       height: 82,
-                                      image: AssetImage("assets/images/mtn.png")),
+                                      image: AssetImage("assets/launcher/libra_launcher.png")),
 
 
                               ],
