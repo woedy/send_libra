@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:send_libra/Screens/Authentication/SignUp/sign_up_resend_verification.dart';
 import 'package:send_libra/Screens/Authentication/SignUp/sign_up_user_info2.dart';
 import 'package:send_libra/Screens/SendMoney/SendNormal/transaction_complate_screen.dart';
@@ -36,15 +37,27 @@ class MyApp extends StatelessWidget {
         // Hide the keyboard when tapping outside the text field
         FocusScope.of(context).requestFocus(FocusNode());
       },
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Libra',
-        theme: theme(),
-        home: MyHomePage(),
-      ),
+      child: MaterialApp.router(routerConfig: router,),
     );
   }
 }
+
+final router = GoRouter(routes: [
+  GoRoute(path: '/',
+  builder: (_,__)=> Scaffold(
+    appBar: AppBar(title: Text("Dashboard"),),
+  ),
+    routes: [
+      GoRoute(path: 'profile',
+      builder: (_,__)=>Scaffold(
+        appBar: AppBar(title: const Text("Profile"),),
+      ))
+    ]
+
+  ),
+
+
+]);
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -70,18 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         future: _user_api,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
 
-          /*return CreditCardInfoScreen(
-            data: {},
-            transaction_type: "mobile",
-            beneficiary_id: "uiy8868787",
-            fname: "null",
-            lname: "",
-            phone: "", avatar: "",
-
-          );*/
-          //return SignUpVerification(email: "fafaetornam@gmail.com", reg_data: {}, verify_state: 'Register',);
           return api_key == null ? SplashScreen() : HomeScreen();
-          //return SignUpUserInfo2Screen(data: {},);
 
         });
   }
