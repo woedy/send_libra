@@ -23,11 +23,6 @@ TextTheme textTheme() {
 AppBarTheme appBarTheme() {
   return AppBarTheme(
     color: libraPrimary,
-    elevation: 0,
-    brightness: Brightness.dark,
-    iconTheme: IconThemeData(color: Colors.white),
-      textTheme: TextTheme(
-      headline6: TextStyle(color: Colors.white, fontSize: 12)
-  )
+    elevation: 0
   );
 }
