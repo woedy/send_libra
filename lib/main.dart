@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +12,7 @@ import 'package:send_libra/Screens/SplashScreen/splash_screen.dart';
 
 import 'package:send_libra/constants.dart';
 import 'package:send_libra/test_home.dart';
+import 'package:uni_links/uni_links.dart';
 
 import 'Components/theme.dart';
 import 'Screens/Authentication/SignUp/sign_up_verification.dart';
@@ -57,12 +60,31 @@ class _MyHomePageState extends State<MyHomePage> {
   String? api_key = "";
   Future? _user_api;
 
+  StreamSubscription? _sub;
+
+  Future<void> initUnilinks() async {
+
+    // check initiallink
+
+    //attach a listener to the stream
+    _sub = linkStream.listen((String? link) {
+      // Parse the link and warn the user if its not correct
+      if(link != null){
+
+      }
+
+    },onError: (err){
+      // Handle exception by warning the user their action did not succeed
+
+    });
+
+  }
+
   @override
   void initState() {
     super.initState();
     _user_api = apiKey();
   }
-
 
   @override
   Widget build(BuildContext context) {
