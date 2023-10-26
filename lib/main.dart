@@ -70,7 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
     _sub = linkStream.listen((String? link) {
       // Parse the link and warn the user if its not correct
       if(link != null){
-
+        var uri = Uri.parse(link);
+        print("#############");
+        print(uri);
       }
 
     },onError: (err){
@@ -84,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _user_api = apiKey();
+    initUnilinks();
   }
 
   @override
