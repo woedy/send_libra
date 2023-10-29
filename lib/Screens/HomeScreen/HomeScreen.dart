@@ -422,7 +422,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                                           return InkWell(
                                                             onTap: (){
 
-                                                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SendMoneyScreen(
+                                                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => QuickSendMoneyScreen(
                                                                 beneficiary_id: receivers.data![index].beneficiaryId,
                                                                 fname: receivers.data![index].fname,
                                                                 lname: receivers.data![index].lname,

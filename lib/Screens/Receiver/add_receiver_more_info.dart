@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:send_libra/Components/keyboard_utils.dart';
 import 'package:send_libra/Screens/Authentication/SignUp/photos/select_photo_options_screen.dart';
 import 'package:send_libra/Screens/Authentication/SignUp/sign_up_user_password.dart';
 import 'package:send_libra/Screens/Receiver/add_receiver_more_info2.dart';
@@ -27,6 +28,10 @@ class AddReceiverPersonalInfoMore extends StatefulWidget {
 }
 
 class _AddReceiverPersonalInfoMoreState extends State<AddReceiverPersonalInfoMore> {
+
+
+  final _formKey = GlobalKey<FormState>();
+
 
   File? _image;
   String? selectedGender;
@@ -210,53 +215,56 @@ class _AddReceiverPersonalInfoMoreState extends State<AddReceiverPersonalInfoMor
                                   height: 30,
                                 ),
 
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Preferred Name", style: TextStyle(fontSize: 12),),
-                                    SizedBox(
-                                      height: 30,
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.symmetric(horizontal: 10),
-                                      decoration: BoxDecoration(
-                                        //color: Colors.white,
-                                          borderRadius: BorderRadius.circular(5),
-                                          border: Border.all(
-                                              color: Colors.white.withOpacity(0.1))),
-                                      child: TextFormField(
-                                        style: TextStyle(color: Colors.white),
-                                        decoration: InputDecoration(
-                                          //hintText: 'Enter Username/Email',
-
-                                          hintStyle: TextStyle(
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.normal),
-                                          labelText: "Optional",
-                                          labelStyle:
-                                          TextStyle(fontSize: 13, color: bodyText2),
-                                          enabledBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(color: libraPrimary)),
-                                          focusedBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(color: libraPrimary)),
-                                          border: InputBorder.none,),
-                                        inputFormatters: [
-                                          LengthLimitingTextInputFormatter(225),
-                                          PasteTextInputFormatter(),
-                                        ],
-                                        textInputAction: TextInputAction.next,
-                                        autofocus: false,
-                                        onSaved: (value) {
-                                          setState(() {
-                                            nickname = value;
-                                          });
-                                        },
+                                Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("Preferred Name", style: TextStyle(fontSize: 12),),
+                                      SizedBox(
+                                        height: 30,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 30,
-                                    ),
-                                  ],
+                                      Container(
+                                        padding: EdgeInsets.symmetric(horizontal: 10),
+                                        decoration: BoxDecoration(
+                                          //color: Colors.white,
+                                            borderRadius: BorderRadius.circular(5),
+                                            border: Border.all(
+                                                color: Colors.white.withOpacity(0.1))),
+                                        child: TextFormField(
+                                          style: TextStyle(color: Colors.white),
+                                          decoration: InputDecoration(
+                                            //hintText: 'Enter Username/Email',
+
+                                            hintStyle: TextStyle(
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.normal),
+                                            labelText: "Optional",
+                                            labelStyle:
+                                            TextStyle(fontSize: 13, color: bodyText2),
+                                            enabledBorder: UnderlineInputBorder(
+                                                borderSide: BorderSide(color: libraPrimary)),
+                                            focusedBorder: UnderlineInputBorder(
+                                                borderSide: BorderSide(color: libraPrimary)),
+                                            border: InputBorder.none,),
+                                          inputFormatters: [
+                                            LengthLimitingTextInputFormatter(225),
+                                            PasteTextInputFormatter(),
+                                          ],
+                                          textInputAction: TextInputAction.next,
+                                          autofocus: false,
+                                          onSaved: (value) {
+                                            setState(() {
+                                              nickname = value;
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                    ],
+                                  ),
                                 ),
 
                                 Text("How do  you know the person", style: TextStyle(fontSize: 12),),
@@ -312,30 +320,34 @@ class _AddReceiverPersonalInfoMoreState extends State<AddReceiverPersonalInfoMor
                                       onTap: () {
                                         //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SignUpUserPasswordScreen()));
 
-                                        if (_image != null){
-                                          final bytes = File(_image!.path).readAsBytesSync();
-                                          String img64 = base64Encode(bytes);
+                                        if (_formKey.currentState!.validate()) {
+                                          _formKey.currentState!.save();
+                                          KeyboardUtil.hideKeyboard(context);
+
+                                            if (_image != null){
+                                              final bytes = File(_image!.path).readAsBytesSync();
+                                              String img64 = base64Encode(bytes);
 
 
-                                          widget.data['avatar'] = img64.toString();
-                                          widget.data['gender'] = selectedGender.toString();
-                                          widget.data['nickname'] = nickname.toString();
-                                          widget.data['relation'] = relation;
+                                              widget.data['avatar'] = img64.toString();
+                                              widget.data['gender'] = selectedGender.toString();
+                                              widget.data['nickname'] = nickname.toString();
+                                              widget.data['relation'] = relation;
 
 
-                                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfoMore2(data: widget.data)));
+                                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfoMore2(data: widget.data)));
 
-                                        }else if(selectedGender != null && relation != null) {
-                                          widget.data['avatar'] = "";
-                                          widget.data['gender'] = selectedGender.toString();
-                                          widget.data['nickname'] = nickname;
-                                          widget.data['relation'] = relation;
+                                            }else if(selectedGender != null && relation != null) {
+                                              widget.data['avatar'] = "";
+                                              widget.data['gender'] = selectedGender.toString();
+                                              widget.data['nickname'] = nickname;
+                                              widget.data['relation'] = relation;
 
 
-                                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfoMore2(data: widget.data)));
+                                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfoMore2(data: widget.data)));
 
+                                            }
                                         }
-
 
 
 

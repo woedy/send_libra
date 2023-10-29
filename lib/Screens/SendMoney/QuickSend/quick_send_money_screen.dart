@@ -49,10 +49,11 @@ class QuickSendMoneyScreen extends StatefulWidget {
   final lname;
   final phone;
   final avatar;
+  final nickname;
 
 
 
-  const QuickSendMoneyScreen({Key? key, required this.beneficiary_id, required this.fname, required this.lname, required this.phone, required this.avatar}) : super(key: key);
+  const QuickSendMoneyScreen({Key? key, required this.beneficiary_id, required this.fname, required this.lname, required this.phone, required this.avatar, this.nickname}) : super(key: key);
 
   @override
   State<QuickSendMoneyScreen> createState() => _QuickSendMoneyScreenState();

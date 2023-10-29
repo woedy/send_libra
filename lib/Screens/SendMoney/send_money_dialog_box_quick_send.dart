@@ -174,7 +174,7 @@ class _LoadingVerificationDialogQuicksendState extends State<LoadingVerification
                     ],
                   ),
                   Image(
-                    image: AssetImage('assets/images/mtn2.png',), fit: BoxFit.cover,
+                    image: AssetImage('assets/launcher/libra_launcher.png',), fit: BoxFit.cover,
                     height: 59,
                     width: 59,
                   ),
