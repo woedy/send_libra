@@ -302,34 +302,31 @@ class _UserProfileState extends State<UserProfile> with SingleTickerProviderStat
 
                                       Column(
                                         children: [
-                                          Opacity(
-                                            opacity: 0.3,
-                                            child: InkWell(
-                                              onTap: (){
-                                              //  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddBankCardScreen()));
-                                                },
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                          height: 21,
-                                                          child: Image(image: AssetImage('assets/icons/bank.png'))),
-                                                      SizedBox(
-                                                        width: 20,
-                                                      ),
-                                                      Text("Manage Bank Cards", style: TextStyle(color: libraPrimary,fontSize: 12),),
+                                          InkWell(
+                                            onTap: (){
+                                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddBankCardScreen()));
+                                              },
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                        height: 21,
+                                                        child: Image(image: AssetImage('assets/icons/bank.png'))),
+                                                    SizedBox(
+                                                      width: 20,
+                                                    ),
+                                                    Text("Manage Bank Cards", style: TextStyle(color: libraPrimary,fontSize: 12),),
 
 
-                                                    ],
+                                                  ],
 
-                                                  ),
-                                                  Icon(Icons.arrow_forward_ios),
+                                                ),
+                                                Icon(Icons.arrow_forward_ios),
 
 
-                                                ],
-                                              ),
+                                              ],
                                             ),
                                           ),
 

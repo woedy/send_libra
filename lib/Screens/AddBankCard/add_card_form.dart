@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:country_picker/country_picker.dart';
+import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:send_libra/Screens/BankDetails/payment_mode_card_listscreen.dart';
 import 'package:send_libra/constants.dart';
 
@@ -242,60 +244,49 @@ class _AddBankCardFormState extends State<AddBankCardForm> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Enter card number",
+                                          "Expiry date",
                                           style: TextStyle(fontSize: 12),
                                         ),
                                         SizedBox(
                                           height: 20,
                                         ),
                                         Container(
+                                          height: 50,
                                           padding: EdgeInsets.symmetric(horizontal: 10),
                                           decoration: BoxDecoration(
-                                            //color: Colors.white,
-                                              borderRadius: BorderRadius.circular(5),
-                                              border: Border.all(color: Colors.white.withOpacity(0.1))
+                                            borderRadius: BorderRadius.circular(5),
+                                            border: Border.all(color: Colors.white.withOpacity(0.1)),
                                           ),
-                                          child: TextFormField(
+                                          child: Center(
+                                            child: DateTimeFormField(
+                                              decoration: const InputDecoration(
+                                                hintStyle: TextStyle(color: Colors.white),
+                                                errorStyle: TextStyle(color: Colors.redAccent),
+                                                border: InputBorder.none,
+                                                suffixIcon: Icon(Icons.event_note, color: Colors.white),
+                                                //labelText: 'Expiry Date',
+                                                labelStyle: TextStyle(color: Colors.grey),
+                                              ),
+                                              mode: DateTimeFieldPickerMode.date,
+                                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                                              validator: (e) {
+                                                if (e == null) {
+                                                  return 'Expiry date required';
+                                                }
 
-                                            style: TextStyle(color: Colors.white),
-                                            decoration: InputDecoration(
-                                              //hintText: 'Enter Password',
-
-                                                hintStyle: TextStyle(
-                                                    color: Colors.grey, fontWeight: FontWeight.normal),
-                                                //labelText: "Password",
-                                                labelStyle: TextStyle(fontSize: 13, color: bodyText2),
-                                                enabledBorder: UnderlineInputBorder(
-                                                    borderSide: BorderSide(color: Colors.transparent)),
-                                                focusedBorder: UnderlineInputBorder(
-                                                    borderSide: BorderSide(color: Colors.transparent)),
-                                              border: InputBorder.none,),
-                                            inputFormatters: [
-                                              LengthLimitingTextInputFormatter(225),
-                                              PasteTextInputFormatter(),
-                                            ],
-                                            validator: (name) {
-                                              if (name!.isEmpty) {
-                                                return 'Name is required';
-                                              }
-                                              if (name.length < 3) {
-                                                return 'Name too short';
-                                              }
-                                              return null;
-                                            },
-                                            textInputAction: TextInputAction.next,
-                                            autofocus: true,
-                                            onSaved: (value) {
-
-                                              setState(() {
-
-                                              });
-
-
-
-                                            },
+                                                return null;
+                                              },
+                                              onDateSelected: (DateTime value) {},
+                                              onSaved: (value) {
+                                                setState(() {
+                                                  //id1_expiry = formatDateTime(value.toString());
+                                                });
+                                              },
+                                              dateFormat: DateFormat("MM/yy"), // Specify the desired date format (month/year)
+                                            ),
                                           ),
                                         ),
+
                                         SizedBox(
                                           height:40,
                                         ),
@@ -374,6 +365,7 @@ class _AddBankCardFormState extends State<AddBankCardForm> {
                               ),
 
 
+/*
 
                               Column(
                                 children: [
@@ -406,6 +398,7 @@ class _AddBankCardFormState extends State<AddBankCardForm> {
                               ),
 
                               Center(child: Image(image: AssetImage("assets/icons/visa.png"))),
+*/
 
                               SizedBox(
                                 height: 30,
@@ -424,19 +417,9 @@ class _AddBankCardFormState extends State<AddBankCardForm> {
                                         color: Colors.transparent,
                                         child: InkWell(
                                           onTap: () {
-                                            Timer(Duration(seconds: 3), () {
-                                              setState(() {
-                                                _isVerifying = false;
-                                                _isVerified = true;
-                                              });
-                                              Timer(Duration(seconds: 4), () {
-                                                Navigator.of(context).pop();
-                                                Navigator.of(context).push(MaterialPageRoute(
-                                                  builder: (context) => PaymentModeCardList(),
-                                                ));
-                                              });
-                                            });
-
+                                            Navigator.of(context).push(MaterialPageRoute(
+                                              builder: (context) => PaymentModeCardList(),
+                                            ));
 /*
                                             showDialog(
                                               context: context,
