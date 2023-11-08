@@ -125,7 +125,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                                       autofocus: false,
                                       onSaved: (value) {
                                         setState(() {
-                                          email = value;
+                                          email = value!.toLowerCase();
                                         });
                                       },
                                     ),

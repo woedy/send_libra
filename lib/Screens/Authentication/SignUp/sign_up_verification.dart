@@ -53,7 +53,7 @@ class SignUpVerification extends StatefulWidget {
   final email;
   final reg_data;
   final String verify_state;
-  const SignUpVerification({Key? key, required this.email, required this.reg_data, required this.verify_state}) : super(key: key);
+  const SignUpVerification({Key? key, required this. email, required this.reg_data, required this.verify_state}) : super(key: key);
 
   @override
   State<SignUpVerification> createState() => _SignUpVerificationState();

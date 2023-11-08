@@ -220,7 +220,7 @@ class _SignInScreenState extends State<SignInScreen> with SingleTickerProviderSt
                                   autofocus: false,
                                   onSaved: (value) {
                                     setState(() {
-                                      email = value;
+                                      email = value!.toLowerCase();
                                     });
                                   },
                                 ),
