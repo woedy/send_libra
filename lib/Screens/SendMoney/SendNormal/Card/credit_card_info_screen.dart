@@ -11,6 +11,7 @@ import 'package:send_libra/Screens/Authentication/SignUp/sign_up_user_info2.dart
 import 'package:send_libra/Screens/HomeScreen/HomeScreen.dart';
 import 'package:send_libra/Screens/SendMoney/QuickSend/confirm_transaction.dart';
 import 'package:send_libra/Screens/SendMoney/SendNormal/transaction_complate_screen.dart';
+import 'package:send_libra/Screens/SendMoney/models/card_payment_model.dart';
 import 'package:send_libra/Screens/SendMoney/models/create_transaction_model.dart';
 import 'package:send_libra/Screens/SendMoney/models/payment_instruction_model.dart';
 import 'package:send_libra/Screens/SendMoney/send_money_dialog_box1.dart';
@@ -503,6 +504,7 @@ class _CreditCardInfoScreenState extends State<CreditCardInfoScreen> with Single
     }
   }
 
+/*
 
   Future<PaymentInstructionModel> callPaymentInstructions(username, trans_ref) async {
 
@@ -540,6 +542,49 @@ class _CreditCardInfoScreenState extends State<CreditCardInfoScreen> with Single
 
 
   }
+*/
+
+
+  Future<CardPaymentModel> callCardPayment(username, trans_ref) async {
+
+    print("###########################");
+    print("PAYMENTS inssssssssssss");
+    print(username);
+    print(trans_ref);
+
+
+
+    final response = await http.post(
+      Uri.parse(hostNameIP + "/api/v1/transactions/" + trans_ref + "/payment"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
+        'Bearer': (await getApiPref()).toString()
+
+      },
+      body: jsonEncode(<String, String>{
+        'username': username
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      print(jsonDecode(response.body));
+      print("###################");
+      print("###################");
+
+      //print(jsonDecode(response.body)['data']['r1_trans_payment_url']);
+      return CardPaymentModel.fromJson(jsonDecode(response.body));
+    } else if (response.statusCode == 422) {
+      print(jsonDecode(response.body));
+      return CardPaymentModel.fromJson(jsonDecode(response.body));
+    }  else {
+
+      throw Exception('Failed to load');
+    }
+
+
+  }
+
 
   Future<void> _processTransactionResponse(BuildContext context, data) async {
     if(data.message == "Transaction is being processed. Check your email for the confirmation code.") {
@@ -633,7 +678,8 @@ class _CreditCardInfoScreenState extends State<CreditCardInfoScreen> with Single
 
       var confirmationData = await confirmTransaction(widget.data['username'], "code", data.data!.transSessionId);
 
-      var paymentInsts = await callPaymentInstructions(widget.data['username'], confirmationData.data!.transRef!);
+     // var paymentInsts = await callPaymentInstructions(widget.data['username'], confirmationData.data!.transRef!);
+      var paymentInsts = await callCardPayment(widget.data['username'], confirmationData.data!.transRef!);
       Navigator.pop(context);
 
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
@@ -641,7 +687,7 @@ class _CreditCardInfoScreenState extends State<CreditCardInfoScreen> with Single
 
 
       await launchUrl(
-        Uri.parse(paymentInsts.data!.r1TransPaymentUrl.toString()),
+        Uri.parse(paymentInsts.data!.url!.toString()),
         mode: LaunchMode.externalApplication,);
 
       /*await Navigator.of(context).push(MaterialPageRoute(

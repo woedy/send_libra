@@ -12,6 +12,7 @@ const clay = Color(0xffa499b3);
 
 
 const hostName = "https://libra.teamalfy.co.uk";
+const hostNameIP = "http://3.10.228.186";
 const socketHostName = "wss://libra.teamalfy.co.uk";
 
 
