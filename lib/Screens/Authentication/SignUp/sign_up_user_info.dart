@@ -186,6 +186,50 @@ class _SignUpUserInfoScreenState extends State<SignUpUserInfoScreen> {
                                   ),
                                 ],
                               ),
+                              SizedBox(
+                                height: 40,
+                              ),
+                              Container(
+                                width: 384,
+                                height: 55,
+                                padding: EdgeInsets.all(15),
+                                decoration: BoxDecoration(
+                                    color: libraBlue,
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    onTap: () {
+
+                                      if (_formKey.currentState!.validate()) {
+                                        _formKey.currentState!.save();
+                                        KeyboardUtil.hideKeyboard(context);
+
+                                        widget.data['first_name'] = first_name;
+                                        widget.data['last_name'] = last_name;
+
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SignUpUserInfo2Screen(data: widget.data)));
+
+                                      }
+
+                                    },
+                                    child: Align(
+                                      child: Container(
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              "Next",
+                                              style: TextStyle(
+                                                  fontSize: 15, color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
 
 
                             ],
@@ -195,52 +239,6 @@ class _SignUpUserInfoScreenState extends State<SignUpUserInfoScreen> {
                     ],
                   ),
                 ),
-
-                Expanded(
-                  flex: 1,
-                  child: Align(
-                    child: Container(
-                      width: 384,
-                      height: 55,
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                          color: libraBlue,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-
-                            if (_formKey.currentState!.validate()) {
-                              _formKey.currentState!.save();
-                              KeyboardUtil.hideKeyboard(context);
-
-                              widget.data['first_name'] = first_name;
-                              widget.data['last_name'] = last_name;
-
-                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SignUpUserInfo2Screen(data: widget.data)));
-
-                            }
-
-                          },
-                          child: Align(
-                            child: Container(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "Next",
-                                    style: TextStyle(
-                                        fontSize: 15, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),)
 
 
               ],

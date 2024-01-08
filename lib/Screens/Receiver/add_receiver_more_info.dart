@@ -267,7 +267,7 @@ class _AddReceiverPersonalInfoMoreState extends State<AddReceiverPersonalInfoMor
                                   ),
                                 ),
 
-                                Text("How do  you know the person", style: TextStyle(fontSize: 12),),
+                                Text("How do you know the person", style: TextStyle(fontSize: 12),),
                                 SizedBox(
                                   height: 30,
                                 ),
