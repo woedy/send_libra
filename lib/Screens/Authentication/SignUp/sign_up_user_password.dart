@@ -124,13 +124,18 @@ class _SignUpUserInfoPasswordState extends State<SignUpUserInfoPassword> with Si
               children: [
                 Expanded(
                   flex: Platform.isAndroid ? 3 : 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: ListView(
+                   // crossAxisAlignment: CrossAxisAlignment.start,
 
                     children: [
-                      Container(
-                          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                          child: Image(image: AssetImage("assets/images/libra-small.png"),)),
+
+                      Row(
+                        children: [
+                          Container(
+                              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                              child: Image(image: AssetImage("assets/images/libra-small.png"),)),
+                        ],
+                      ),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
                         child: Text.rich(
@@ -142,7 +147,7 @@ class _SignUpUserInfoPasswordState extends State<SignUpUserInfoPassword> with Si
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
                       Form(
                         key: _formKey,
@@ -320,62 +325,69 @@ class _SignUpUserInfoPasswordState extends State<SignUpUserInfoPassword> with Si
                                 height: 50,
                               ),
 
-                              Align(
-                                child: Container(
-                                  width: 384,
-                                  height: 55,
-                                  padding: EdgeInsets.all(15),
-                                  decoration: BoxDecoration(
-                                      color: libraBlue,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    child: InkWell(
-                                      onTap: () {
+                              Column(
+                                children: [
+                                  Align(
+                                    child: Container(
+                                      width: 384,
+                                      height: 55,
+                                      padding: EdgeInsets.all(15),
+                                      decoration: BoxDecoration(
+                                          color: libraBlue,
+                                          borderRadius: BorderRadius.circular(15)),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          onTap: () {
 
-                                        if (_formKey.currentState!.validate()) {
-                                          _formKey.currentState!.save();
-                                          KeyboardUtil.hideKeyboard(context);
-                                          //_futureSignIn = signInUser(email!, password!);
+                                            if (_formKey.currentState!.validate()) {
+                                              _formKey.currentState!.save();
+                                              KeyboardUtil.hideKeyboard(context);
+                                              //_futureSignIn = signInUser(email!, password!);
 
-                                          var validation = validatePassword(password!, password_confirmation!);
+                                              var validation = validatePassword(password!, password_confirmation!);
 
-                                          if (validation == "Passwords do not match!"){
-                                            //return;
+                                              if (validation == "Passwords do not match!"){
+                                                //return;
 
-                                          }else{
-                                            widget.data['password'] = password;
-                                            widget.data['password_confirmation'] = password_confirmation;
+                                              }else{
+                                                widget.data['password'] = password;
+                                                widget.data['password_confirmation'] = password_confirmation;
 
-                                            widget.data['source_country_id'] = "01";
+                                                widget.data['source_country_id'] = "01";
 
-                                            //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SignUpUserInfoPassword(data: widget.data)));
+                                                //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SignUpUserInfoPassword(data: widget.data)));
 
-                                            _futureUser = loginUser(widget.data);
+                                                _futureUser = loginUser(widget.data);
 
 
-                                          }
-                                        }
+                                              }
+                                            }
 
-                                      },
-                                      child: Align(
-                                        child: Container(
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                "Sign Up",
-                                                style: TextStyle(
-                                                    fontSize: 15, color: Colors.white),
+                                          },
+                                          child: Align(
+                                            child: Container(
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    "Sign Up",
+                                                    style: TextStyle(
+                                                        fontSize: 15, color: Colors.white),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              )
+                                  SizedBox(
+                                    height: 150,
+                                  ),
+                                ],
+                              ),
 
                             ],
                           ),
