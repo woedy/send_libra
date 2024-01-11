@@ -59,9 +59,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     ),
                   ],
                 ),
-                Expanded(
+            /*    Expanded(
                   child: ListView.builder(
-                      itemCount: 0,
+                      itemCount: 1,
                       itemBuilder: (context, index) {
                         return  ListTile(
                           title: Text("You sent \£ 500 to Sandra Mensah", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
@@ -69,6 +69,27 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           leading: Icon(Icons.notifications_active, color: Colors.white,),
                         );
                       }
+                  ),
+                ),*/
+                Expanded(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Icon(Icons.notification_important_outlined, size: 50, color: Colors.white,),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text("No new notifications available."),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 )
 
