@@ -419,7 +419,7 @@ class _ForgotPasswordState extends State<ForgotPassword> with SingleTickerProvid
                                         height: 30,
                                       ),
                                       Text(data.message!,
-                                        style: TextStyle(fontSize: 25, color: libraPrimary),
+                                        style: TextStyle(fontSize: 22, color: libraPrimary),
                                       ),
                                       SizedBox(
                                         height: 30,
@@ -450,6 +450,75 @@ class _ForgotPasswordState extends State<ForgotPassword> with SingleTickerProvid
                 context,
                 MaterialPageRoute(builder: (context) => ResetPassword(email: email)),
                     (route) => false,
+              );
+            });
+
+            return const SizedBox();
+          }
+
+          else if(data.message == "Incorrect Username/ DoB provided. Please try again.") {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              showDialog(
+                  barrierDismissible: true,
+                  context: context,
+                  builder: (BuildContext context){
+                    return Dialog(
+                        backgroundColor: Colors.transparent,
+                        child: Container(
+
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10), color: Colors.white),
+
+                          child: Stack(
+                            children: [
+                              //Image(image: AssetImage("assets/images/sprinkles.png")),
+                              Container(
+                                  height: 300,
+
+                                  padding: EdgeInsets.all(20),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Image(image: AssetImage("assets/images/libra-dialog.png")),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      Text(data.message!,
+                                        style: TextStyle(fontSize: 22, color: libraPrimary),
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Icon(Icons.error_outline, color: Colors.red, size: 40,)
+                                        ],
+                                      ),
+                                    ],
+                                  )
+
+
+                              ),
+                            ],
+                          ),
+                        )
+
+                    );
+                  }
+              );
+
+            });
+
+
+
+            Future.delayed(const Duration(seconds: 2), () {
+              Navigator.of(context).pop();
+
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => ForgotPassword()),
+
               );
             });
 
