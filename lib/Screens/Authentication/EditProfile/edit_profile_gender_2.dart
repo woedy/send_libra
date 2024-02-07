@@ -25,7 +25,7 @@ class _EditProfileGenderState extends State<EditProfileGender> {
           child: Column(
             children: [
               Expanded(
-                  child: Column(
+                  child: ListView(
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width,
