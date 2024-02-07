@@ -15,7 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<SignInModel> loginUser(String email, String password) async {
   final response = await http.post(
-    Uri.parse('https://libra.teamalfy.co.uk/api/v1/login'),
+    Uri.parse(hostName + '/api/v1/login'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

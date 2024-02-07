@@ -555,7 +555,7 @@ class _CreditCardInfoScreenState extends State<CreditCardInfoScreen> with Single
 
 
     final response = await http.post(
-      Uri.parse(hostNameIP + "/api/v1/transactions/" + trans_ref + "/payment"),
+      Uri.parse(hostName + "/api/v1/transactions/" + trans_ref + "/payment"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',

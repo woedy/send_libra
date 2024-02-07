@@ -15,7 +15,7 @@ import 'package:send_libra/constants.dart';
 
 Future<SignInModel> loginUser(data) async {
   final response = await http.post(
-    Uri.parse('https://libra.teamalfy.co.uk/api/v1/register'),
+    Uri.parse(hostName + '/api/v1/register'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
