@@ -245,95 +245,99 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                           Image(
                                             image: AssetImage('assets/images/home-logo.png',), fit: BoxFit.cover,
                                           ),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
+                                          Expanded(
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
 
 
-                                                  if(userData.data.avatar == "")...[
+                                                    if(userData.data.avatar == "")...[
 
-                                                    InkWell(
-                                                      onTap: (){
-                                                        Navigator.of(context).push(MaterialPageRoute(
-                                                          builder: (context) => UserProfile(),
-                                                        ));
-                                                      },
-                                                      child: Container(
-                                                        height: 59,
-                                                        width: 59,
-                                                        decoration: BoxDecoration(
-                                                            color: libraPrimary,
-                                                            borderRadius: BorderRadius.circular(10)
-                                                        ),
-                                                        child: Center(
-                                                          child: Text(userData.data.firstname.toString().substring(0, 1) + userData.data.lastname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                                        ),
-                                                      ),
-                                                    ),
-
-                                                  ]else...[
-                                                    InkWell(
-                                                      onTap: (){
-                                                        Navigator.of(context).push(MaterialPageRoute(
-                                                          builder: (context) => UserProfile(),
-                                                        ));
-                                                      },
-                                                      child: Container(
+                                                      InkWell(
+                                                        onTap: (){
+                                                          Navigator.of(context).push(MaterialPageRoute(
+                                                            builder: (context) => UserProfile(),
+                                                          ));
+                                                        },
+                                                        child: Container(
                                                           height: 59,
                                                           width: 59,
                                                           decoration: BoxDecoration(
-                                                            color: libraPrimary,
-                                                            borderRadius: BorderRadius.circular(10),
-                                                            image: DecorationImage(
-                                                                image: MemoryImage(base64Decode(userData.data.avatarContent.trim().toString())
-                                                                )
-                                                            ),
-
-                                                          )),
-                                                    ),
-                                                  ],
-                                                  SizedBox(
-                                                    width: 10,
-                                                  ),
-                                                  Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Text(_greeting, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white.withOpacity(0.5)),),
-                                                      SizedBox(
-                                                        height: 5,
+                                                              color: libraPrimary,
+                                                              borderRadius: BorderRadius.circular(10)
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(userData.data.firstname.toString().substring(0, 1) + userData.data.lastname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                                          ),
+                                                        ),
                                                       ),
-                                                      Text(userData.data.firstname.toString() + " " + userData.data.lastname.toString(), style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white),),
-                                                      SizedBox(
-                                                        height: 5,
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Icon(Icons.star, size: 15, color: Colors.yellow,),
-                                                          Icon(Icons.star, size: 15, color: Colors.yellow,),
-                                                          Icon(Icons.star, size: 15, color: Colors.yellow,),
-                                                          Icon(Icons.star, size: 15, color: Colors.yellow,),
-                                                          Icon(Icons.star, size: 15, color: Colors.yellow,),
-                                                        ],
-                                                      )
 
+                                                    ]else...[
+                                                      InkWell(
+                                                        onTap: (){
+                                                          Navigator.of(context).push(MaterialPageRoute(
+                                                            builder: (context) => UserProfile(),
+                                                          ));
+                                                        },
+                                                        child: Container(
+                                                            height: 59,
+                                                            width: 59,
+                                                            decoration: BoxDecoration(
+                                                              color: libraPrimary,
+                                                              borderRadius: BorderRadius.circular(10),
+                                                              image: DecorationImage(
+                                                                  image: MemoryImage(base64Decode(userData.data.avatarContent.trim().toString())
+                                                                  )
+                                                              ),
+
+                                                            )),
+                                                      ),
                                                     ],
-                                                  )
-                                                ],
-                                              ),
-                                              InkWell(
-                                                onTap: (){
+                                                    SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(_greeting, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white.withOpacity(0.5)),),
+                                                        SizedBox(
+                                                          height: 5,
+                                                        ),
+                                                        Text(userData.data.firstname.toString() + " " + userData.data.lastname.toString(), style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white),),
+                                                        SizedBox(
+                                                          height: 5,
+                                                        ),
+                                                        Expanded(
+                                                          child: Row(
+                                                            children: [
+                                                              Icon(Icons.star, size: 15, color: Colors.yellow,),
+                                                              Icon(Icons.star, size: 15, color: Colors.yellow,),
+                                                              Icon(Icons.star, size: 15, color: Colors.yellow,),
+                                                              Icon(Icons.star, size: 15, color: Colors.yellow,),
+                                                              Icon(Icons.star, size: 15, color: Colors.yellow,),
+                                                            ],
+                                                          ),
+                                                        )
+
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                                InkWell(
+                                                  onTap: (){
 
 
-                                                  Navigator.of(context).push(MaterialPageRoute(
-                                                      builder: (BuildContext context) =>
-                                                          NotificationScreen()));
+                                                    Navigator.of(context).push(MaterialPageRoute(
+                                                        builder: (BuildContext context) =>
+                                                            NotificationScreen()));
 
 
-                                                },
-                                                  child: Icon(Icons.notifications_none_sharp, color: Colors.white, size: 30,))
-                                            ],
+                                                  },
+                                                    child: Icon(Icons.notifications_none_sharp, color: Colors.white, size: 30,))
+                                              ],
+                                            ),
                                           )
                                         ],
                                       ),
@@ -375,152 +379,154 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                           ),
                                         ],
                                       ),
-                                      Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        height: 78,
-                                        margin: EdgeInsets.all(10),
-                                        child: Row(
-                                          children: [
-                                            InkWell(
-                                              onTap: (){
-                                                Navigator.of(context).push(MaterialPageRoute(
-                                                  builder: (context) => AddReceiver1(),
-                                                ));
-                                              },
-                                              child: Container(
-                                                height: 78,
-                                                width: 78,
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(Icons.add, color: Colors.white,),
-                                                    Center(child: Text("Add receiver", style: TextStyle(fontSize: 11),))
-                                                  ],
-                                                ),
-
-                                                decoration: BoxDecoration(
-                                                    color: libraLight.withOpacity(0.3),
-                                                    borderRadius: BorderRadius.circular(15)
-                                                ),
-                                              ),
-                                            ),
-
-                                            if(receivers.data.length != 0)...[
-                                              Expanded(
-                                                  child:ListView.builder(
-                                                      scrollDirection: Axis.horizontal,
-                                                      itemCount: receivers.data.length,
-                                                      itemBuilder: (context, index){
-
-                                                        print("#############");
-                                                        print("##########################");
-                                                        print("#############");
-                                                        print(receivers.data[0].name.toString());
-
-                                                        if(receivers.data[index].avatar == ""){
-                                                          return InkWell(
-                                                            onTap: (){
-
-                                                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => QuickSendMoneyScreen(
-                                                                beneficiary_id: receivers.data![index].beneficiaryId,
-                                                                fname: receivers.data![index].fname,
-                                                                lname: receivers.data![index].lname,
-                                                                nickname: receivers.data![index].nickname,
-                                                                phone: receivers.data![index].mobile,
-                                                                avatar: receivers.data![index].avatarContent.trim().toString(),
-                                                              )));
-
-
-                                                            },
-                                                            child: Row(
-                                                              children: [
-                                                                SizedBox(
-                                                                  width: 10,
-                                                                ),
-
-                                                                if(receivers.data[index].nickname == "")...[
-                                                                  Container(
-                                                                    height: 78,
-                                                                    width: 78,
-                                                                    decoration: BoxDecoration(
-                                                                        color: libraLight.withOpacity(0.3),
-                                                                        borderRadius: BorderRadius.circular(15)
-                                                                    ),
-                                                                    child: Center(
-                                                                      child: Text(receivers.data[index].fname.toString().substring(0, 1) + receivers.data[index].lname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                                                    ),
-                                                                  ),
-                                                                ]else...[
-                                                                  Container(
-                                                                    height: 78,
-                                                                    width: 78,
-                                                                    decoration: BoxDecoration(
-                                                                        color: libraLight.withOpacity(0.3),
-                                                                        borderRadius: BorderRadius.circular(15)
-                                                                    ),
-                                                                    child: Center(
-                                                                      child: Text(receivers.data[index].nickname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                                                    ),
-                                                                  ),
-                                                                ]
-
-                                                              ],
-                                                            ),
-                                                          );
-                                                        }else {
-                                                          return InkWell(
-                                                            onTap: (){
-                                                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => QuickSendMoneyScreen(
-                                                                beneficiary_id: receivers.data![index].beneficiaryId,
-                                                                fname: receivers.data![index].fname,
-                                                                lname: receivers.data![index].lname,
-                                                                phone: receivers.data![index].mobile,
-                                                                avatar: receivers.data![index].avatarContent.trim().toString(),
-                                                              )));
-
-                                                            },
-                                                            child: Row(
-                                                              children: [
-                                                                SizedBox(
-                                                                  width: 10,
-                                                                ),
-                                                                Container(
-                                                                  height: 78,
-                                                                  width: 78,
-                                                                  margin: EdgeInsets.symmetric(horizontal: 10),
-                                                                  decoration: BoxDecoration(
-                                                                      color: libraLight.withOpacity(0.3),
-                                                                      borderRadius: BorderRadius.circular(15),
-                                                                      image: DecorationImage(
-                                                                          image: MemoryImage(base64Decode(receivers.data[index].avatarContent.trim().toString()),),
-                                                                          fit: BoxFit.cover
-                                                                      )
-                                                                  ),
-
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          );
-                                                        }
-
-
-                                                      }
-                                                  )
-                                              ),
-                                            ]else...[
-                                              Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width: 30,
+                                      Expanded(
+                                        child: Container(
+                                          width: MediaQuery.of(context).size.width,
+                                          height: 78,
+                                          margin: EdgeInsets.all(10),
+                                          child: Row(
+                                            children: [
+                                              InkWell(
+                                                onTap: (){
+                                                  Navigator.of(context).push(MaterialPageRoute(
+                                                    builder: (context) => AddReceiver1(),
+                                                  ));
+                                                },
+                                                child: Container(
+                                                  height: 78,
+                                                  width: 78,
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      Icon(Icons.add, color: Colors.white,),
+                                                      Center(child: Text("Add receiver", style: TextStyle(fontSize: 11),))
+                                                    ],
                                                   ),
-                                                  Center(child: Text("No receivers available")),
-                                                ],
-                                              )
-                                            ]
-
-
-                                          ],
+                                        
+                                                  decoration: BoxDecoration(
+                                                      color: libraLight.withOpacity(0.3),
+                                                      borderRadius: BorderRadius.circular(15)
+                                                  ),
+                                                ),
+                                              ),
+                                        
+                                              if(receivers.data.length != 0)...[
+                                                Expanded(
+                                                    child:ListView.builder(
+                                                        scrollDirection: Axis.horizontal,
+                                                        itemCount: receivers.data.length,
+                                                        itemBuilder: (context, index){
+                                        
+                                                          print("#############");
+                                                          print("##########################");
+                                                          print("#############");
+                                                          print(receivers.data[0].name.toString());
+                                        
+                                                          if(receivers.data[index].avatar == ""){
+                                                            return InkWell(
+                                                              onTap: (){
+                                        
+                                                                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => QuickSendMoneyScreen(
+                                                                  beneficiary_id: receivers.data![index].beneficiaryId,
+                                                                  fname: receivers.data![index].fname,
+                                                                  lname: receivers.data![index].lname,
+                                                                  nickname: receivers.data![index].nickname,
+                                                                  phone: receivers.data![index].mobile,
+                                                                  avatar: receivers.data![index].avatarContent.trim().toString(),
+                                                                )));
+                                        
+                                        
+                                                              },
+                                                              child: Row(
+                                                                children: [
+                                                                  SizedBox(
+                                                                    width: 10,
+                                                                  ),
+                                        
+                                                                  if(receivers.data[index].nickname == "")...[
+                                                                    Container(
+                                                                      height: 78,
+                                                                      width: 78,
+                                                                      decoration: BoxDecoration(
+                                                                          color: libraLight.withOpacity(0.3),
+                                                                          borderRadius: BorderRadius.circular(15)
+                                                                      ),
+                                                                      child: Center(
+                                                                        child: Text(receivers.data[index].fname.toString().substring(0, 1) + receivers.data[index].lname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                                                      ),
+                                                                    ),
+                                                                  ]else...[
+                                                                    Container(
+                                                                      height: 78,
+                                                                      width: 78,
+                                                                      decoration: BoxDecoration(
+                                                                          color: libraLight.withOpacity(0.3),
+                                                                          borderRadius: BorderRadius.circular(15)
+                                                                      ),
+                                                                      child: Center(
+                                                                        child: Text(receivers.data[index].nickname.toString().substring(0, 1), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                                                      ),
+                                                                    ),
+                                                                  ]
+                                        
+                                                                ],
+                                                              ),
+                                                            );
+                                                          }else {
+                                                            return InkWell(
+                                                              onTap: (){
+                                                                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => QuickSendMoneyScreen(
+                                                                  beneficiary_id: receivers.data![index].beneficiaryId,
+                                                                  fname: receivers.data![index].fname,
+                                                                  lname: receivers.data![index].lname,
+                                                                  phone: receivers.data![index].mobile,
+                                                                  avatar: receivers.data![index].avatarContent.trim().toString(),
+                                                                )));
+                                        
+                                                              },
+                                                              child: Row(
+                                                                children: [
+                                                                  SizedBox(
+                                                                    width: 10,
+                                                                  ),
+                                                                  Container(
+                                                                    height: 78,
+                                                                    width: 78,
+                                                                    margin: EdgeInsets.symmetric(horizontal: 10),
+                                                                    decoration: BoxDecoration(
+                                                                        color: libraLight.withOpacity(0.3),
+                                                                        borderRadius: BorderRadius.circular(15),
+                                                                        image: DecorationImage(
+                                                                            image: MemoryImage(base64Decode(receivers.data[index].avatarContent.trim().toString()),),
+                                                                            fit: BoxFit.cover
+                                                                        )
+                                                                    ),
+                                        
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          }
+                                        
+                                        
+                                                        }
+                                                    )
+                                                ),
+                                              ]else...[
+                                                Row(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: 30,
+                                                    ),
+                                                    Center(child: Text("No receivers available")),
+                                                  ],
+                                                )
+                                              ]
+                                        
+                                        
+                                            ],
+                                          ),
                                         ),
                                       )
                                     ],

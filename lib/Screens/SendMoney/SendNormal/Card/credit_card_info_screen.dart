@@ -48,6 +48,11 @@ Future<CreateTransactionModel> createTransaction(data) async {
     return CreateTransactionModel.fromJson(jsonDecode(response.body));
   }  else {
 
+    print("##############");
+    print("##############");
+    print(response.statusCode);
+    print(response.body.toString());
+
     throw Exception('Failed to send money');
   }
 }
@@ -339,7 +344,7 @@ class _CreditCardInfoScreenState extends State<CreditCardInfoScreen> with Single
                         SizedBox(
                           height: 30,
                         ),
-                        Text("is connecting to WorldPay.",
+                        Text("Your transaction is in progress.",
                           style: TextStyle(fontSize: 30, color: libraPrimary),
                         ),
                         SizedBox(
@@ -609,7 +614,7 @@ class _CreditCardInfoScreenState extends State<CreditCardInfoScreen> with Single
                           SizedBox(
                             height: 30,
                           ),
-                          Text("is connecting to WorldPay.",
+                          Text("Your transaction is in progress.",
                             style: TextStyle(fontSize: 30, color: libraPrimary),
                           ),
                           SizedBox(
