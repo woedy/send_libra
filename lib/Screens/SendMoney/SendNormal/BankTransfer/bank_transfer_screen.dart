@@ -88,6 +88,10 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
   @override
   Widget build(BuildContext context) {
 
+    print("###############################");
+    print("widget.data");
+    print(widget.data);
+
     return (_futureCreateTransaction == null) ? buildColumn(context) : buildFutureBuilder();
   }
 
@@ -99,8 +103,8 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
 
             height: MediaQuery.of(context).size.height,
 
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
+              //crossAxisAlignment: CrossAxisAlignment.start,
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
@@ -233,7 +237,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("Payee/Account Name", style: TextStyle(color: Colors.white.withOpacity(0.4),)),
-                              Text("Libra", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
+                              Text("Fortune Portfolio Ltd", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
                             ],
                           ),
                           SizedBox(
@@ -243,7 +247,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("Sort Code", style: TextStyle(color: Colors.white.withOpacity(0.4),)),
-                              Text("2 2 4 4", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
+                              Text("04-00-75", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
                             ],
                           ),
                           SizedBox(
@@ -253,7 +257,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("Account Number ", style: TextStyle(color: Colors.white.withOpacity(0.4),)),
-                              Text("56 1892987 78", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
+                              Text("53 31 27 67", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
                             ],
                           ),
                           SizedBox(
@@ -263,7 +267,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("Payment Reference ", style: TextStyle(color: Colors.white.withOpacity(0.4),)),
-                              Text("OP100023", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
+                              Text("----", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
                             ],
                           ),
 
@@ -279,19 +283,11 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("Total Amount To Pay", style: TextStyle(color: Colors.white.withOpacity(0.4),)),
-                          Text("GBP 100.00", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
+                          Text("GBP " + widget.data['amount'].toString(), style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
                         ],
                       ),
-                    )
-                  ],
-                ),
-
-
-
-                Expanded(
-                  flex: 1,
-                  child: Align(
-                    child: Container(
+                    ),
+                    Container(
                       width: 384,
                       height: 55,
                       padding: EdgeInsets.all(15),
@@ -345,7 +341,15 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
                         ),
                       ),
                     ),
-                  ),)
+                    SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
+
+
+
+
 
 
 

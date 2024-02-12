@@ -220,7 +220,7 @@ class _BankConfirmTransactionState extends State<BankConfirmTransaction>  with S
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("Payee/Account Name", style: TextStyle(color: Colors.white.withOpacity(0.4),)),
-                              Text("Libra", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
+                              Text("Fortune Portfolio Ltd", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
                             ],
                           ),
                           SizedBox(
@@ -230,7 +230,7 @@ class _BankConfirmTransactionState extends State<BankConfirmTransaction>  with S
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("Sort Code", style: TextStyle(color: Colors.white.withOpacity(0.4),)),
-                              Text("2 2 4 4", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
+                              Text("04-00-75", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
                             ],
                           ),
                           SizedBox(
@@ -240,7 +240,7 @@ class _BankConfirmTransactionState extends State<BankConfirmTransaction>  with S
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("Account Number ", style: TextStyle(color: Colors.white.withOpacity(0.4),)),
-                              Text("56 1892987 78", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
+                              Text("53 31 27 67", style: TextStyle(color: clay, fontSize: 20, fontWeight: FontWeight.bold),),
                             ],
                           ),
                           SizedBox(
