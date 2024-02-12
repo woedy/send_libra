@@ -211,7 +211,7 @@ class _SignUpUserInfoPasswordState extends State<SignUpUserInfoPassword> with Si
                                         if (value!.isEmpty) {
                                           return 'Password is required';
                                         }
-                                        if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$%^&*])')
+                                        if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-!@#\$%^&*_()\-+=/.,<>?"~`£{}|:;])')
                                             .hasMatch(value)) {
 
                                           ScaffoldMessenger.of(context).showSnackBar(
