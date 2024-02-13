@@ -85,6 +85,7 @@ class _EditProfileCountryState extends State<EditProfileCountry> {
                             onTap: (){
                               showCountryPicker(
 
+
                                   context: context,
                                   showPhoneCode: true,
                                   onSelect: (Country country) {
@@ -93,7 +94,8 @@ class _EditProfileCountryState extends State<EditProfileCountry> {
                                     });
                                   },
                                   countryListTheme: CountryListThemeData(
-                                      textStyle: TextStyle(color: Colors.black)
+                                      textStyle: TextStyle(color: Colors.black),
+                                    searchTextStyle: TextStyle(color: Colors.black)
                                   )
 
                               );

@@ -73,14 +73,16 @@ class _UpdateUserInfoScreenState extends State<UpdateUserInfoScreen> {
                           ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: Text.rich(
-                            TextSpan(
-                              text: "Update",
-                              style: TextStyle(fontSize: 75,  ),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text.rich(
+                              TextSpan(
+                                text: "Update",
+                                style: TextStyle(fontSize: 75,  ),
 
-                            )
+                              )
+                          ),
                         ),
                       ),
                     ],

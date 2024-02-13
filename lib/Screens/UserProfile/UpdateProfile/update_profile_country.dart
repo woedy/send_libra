@@ -105,7 +105,9 @@ class _UpdateProfileCountryState extends State<UpdateProfileCountry> {
                                     });
                                   },
                                   countryListTheme: CountryListThemeData(
-                                      textStyle: TextStyle(color: Colors.black)
+                                      textStyle: TextStyle(color: Colors.black),
+                                      searchTextStyle: TextStyle(color: Colors.black),
+
                                   )
 
                               );

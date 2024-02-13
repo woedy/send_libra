@@ -5,21 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:send_libra/Screens/Authentication/SignUp/sign_up_resend_verification.dart';
 import 'package:send_libra/Screens/Authentication/SignUp/sign_up_user_info2.dart';
+import 'package:send_libra/Screens/HomeScreen/HomeScreen.dart';
 import 'package:send_libra/Screens/SendMoney/SendNormal/transaction_complate_screen.dart';
 
 
 import 'package:send_libra/Screens/SplashScreen/splash_screen.dart';
+import 'package:send_libra/Screens/UserProfile/UpdateProfile/update_profile_country.dart';
 
 import 'package:send_libra/constants.dart';
 import 'package:send_libra/test_home.dart';
 import 'package:uni_links/uni_links.dart';
 
 import 'Components/theme.dart';
-import 'Screens/Authentication/SignUp/sign_up_verification.dart';
-import 'Screens/HomeScreen/HomeScreen.dart';
-import 'Screens/SendMoney/SendNormal/BankTransfer/bank_transfer_screen.dart';
-import 'Screens/SendMoney/SendNormal/Card/credit_card_info_screen.dart';
-import 'playground2.dart';
+import 'Screens/UserProfile/EditProfileInside/edit_profile_country_3.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
