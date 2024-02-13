@@ -276,6 +276,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
                         ],
                       ),
                     ),
+
                     Container(
                       padding: EdgeInsets.all(20),
                       color: Colors.black.withOpacity(0.5),
@@ -287,62 +288,70 @@ class _BankTransferScreenState extends State<BankTransferScreen> with SingleTick
                         ],
                       ),
                     ),
-                    Container(
-                      width: 384,
-                      height: 55,
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                          color: libraBlue,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 384,
+                          height: 55,
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              color: libraBlue,
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {
 
-                            print(widget.data["amount"]);
+                                print(widget.data["amount"]);
 
-                            showDialog<void>(
-                              context: context,
-                              barrierDismissible: false, // user must tap button!
-                              builder: (BuildContext context) {
-                                return LoadingVerificationDialog1(
-                                  amount: widget.data["amount"],
-                                  full_name: widget.fname.toString() + " " + widget.lname.toString(),
-                                  mobile: widget.phone,
-                                  image: widget.avatar,
-                                  benef_id: widget.beneficiary_id,
-                                  fname: widget.fname.toString(),
-                                  lname: widget.lname.toString(),
-                                  onCountdownComplete: () {
-                                    setState(() {
-                                      _futureCreateTransaction = createTransaction(widget.data);
-                                    });
+                                showDialog<void>(
+                                  context: context,
+                                  barrierDismissible: false, // user must tap button!
+                                  builder: (BuildContext context) {
+                                    return LoadingVerificationDialog1(
+                                      amount: widget.data["amount"],
+                                      full_name: widget.fname.toString() + " " + widget.lname.toString(),
+                                      mobile: widget.phone,
+                                      image: widget.avatar,
+                                      benef_id: widget.beneficiary_id,
+                                      fname: widget.fname.toString(),
+                                      lname: widget.lname.toString(),
+                                      onCountdownComplete: () {
+                                        setState(() {
+                                          _futureCreateTransaction = createTransaction(widget.data);
+                                        });
+                                      },
+                                    );
+
                                   },
                                 );
 
                               },
-                            );
-
-                          },
-                          child: Align(
-                            child: Container(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "Continue",
-                                    style: TextStyle(
-                                        fontSize: 15, color: Colors.white),
+                              child: Align(
+                                child: Container(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "Continue",
+                                        style: TextStyle(
+                                            fontSize: 15, color: Colors.white),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 50,
                     ),
                   ],
                 ),
