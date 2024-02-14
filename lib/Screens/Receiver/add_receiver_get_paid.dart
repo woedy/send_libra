@@ -96,7 +96,7 @@ class _AddReceiverGetPaidScreenState extends State<AddReceiverGetPaidScreen> {
                                   ),
 
                                   Container(
-                                    height: 100,
+                                    height: 110,
                                     child: ListView(
                                       scrollDirection: Axis.horizontal,
                                       children: [
@@ -293,106 +293,108 @@ class _AddReceiverGetPaidScreenState extends State<AddReceiverGetPaidScreen> {
                           ),
                         ),
 
-                      ],
-                    ),
-                  ),
-
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: [
-
-                        if(selectedItemIndex == -1)...[
-
-                        ]else...[
-                          Align(
-                            child: Container(
-                              width: 384,
-                              height: 55,
-                              padding: EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                  color: libraBlue,
-                                  borderRadius: BorderRadius.circular(15)
-
-                              ),
-                              child: Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  onTap: (){
-
-                                    if (_formKey.currentState!.validate()) {
-                                      _formKey.currentState!.save();
-                                      KeyboardUtil.hideKeyboard(context);
-
-                                      if(selectedItemIndex == 0){
-                                        widget.data['mobile_transfer_number'] = mobile_transfer_number;
-                                        widget.data['mobile_transfer_network'] = "MTN Ghana";
-                                        widget.data['mobile_transfer_network_id'] = "1";
-                                        widget.data['mobile_transfer_network_credit_type_id'] = "22";
-                                        widget.data['mobile_transfer_network_credit_type'] = "12";
+                        SizedBox(
+                          height: 30,
+                        ),
 
 
+                        Column(
+                          children: [
 
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfo(data: widget.data,)));
+                            if(selectedItemIndex == -1)...[
 
-                                      }else if(selectedItemIndex == 1){
+                            ]else...[
+                              Align(
+                                child: Container(
+                                  width: 384,
+                                  height: 55,
+                                  padding: EdgeInsets.all(15),
+                                  decoration: BoxDecoration(
+                                      color: libraBlue,
+                                      borderRadius: BorderRadius.circular(15)
 
-                                        widget.data['mobile_transfer_number'] = mobile_transfer_number;
-                                        widget.data['mobile_transfer_network'] = "vodafone";
-                                        widget.data['mobile_transfer_network_id'] = "2";
-                                        widget.data['mobile_transfer_network_credit_type_id'] = "22";
-                                        widget.data['mobile_transfer_network_credit_type'] = "12";
+                                  ),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      onTap: (){
+
+                                        if (_formKey.currentState!.validate()) {
+                                          _formKey.currentState!.save();
+                                          KeyboardUtil.hideKeyboard(context);
+
+                                          if(selectedItemIndex == 0){
+                                            widget.data['mobile_transfer_number'] = mobile_transfer_number;
+                                            widget.data['mobile_transfer_network'] = "MTN Ghana";
+                                            widget.data['mobile_transfer_network_id'] = "1";
+                                            widget.data['mobile_transfer_network_credit_type_id'] = "22";
+                                            widget.data['mobile_transfer_network_credit_type'] = "12";
 
 
 
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfo(data: widget.data,)));
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfo(data: widget.data,)));
+
+                                          }else if(selectedItemIndex == 1){
+
+                                            widget.data['mobile_transfer_number'] = mobile_transfer_number;
+                                            widget.data['mobile_transfer_network'] = "vodafone";
+                                            widget.data['mobile_transfer_network_id'] = "2";
+                                            widget.data['mobile_transfer_network_credit_type_id'] = "22";
+                                            widget.data['mobile_transfer_network_credit_type'] = "12";
 
 
 
-                                      }else if(selectedItemIndex == 2){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfo(data: widget.data,)));
 
 
-                                        widget.data['mobile_transfer_number'] = mobile_transfer_number;
-                                        widget.data['mobile_transfer_network'] = "AirtelTigo";
-                                        widget.data['mobile_transfer_network_id'] = "3";
-                                        widget.data['mobile_transfer_network_credit_type_id'] = "22";
-                                        widget.data['mobile_transfer_network_credit_type'] = "12";
+
+                                          }else if(selectedItemIndex == 2){
 
 
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfo(data: widget.data,)));
+                                            widget.data['mobile_transfer_number'] = mobile_transfer_number;
+                                            widget.data['mobile_transfer_network'] = "AirtelTigo";
+                                            widget.data['mobile_transfer_network_id'] = "3";
+                                            widget.data['mobile_transfer_network_credit_type_id'] = "22";
+                                            widget.data['mobile_transfer_network_credit_type'] = "12";
 
-                                      }
 
-                                    }
-                                  },
-                                  child: Align(
-                                    child: Container(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          SizedBox(
-                                            width: 10,
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfo(data: widget.data,)));
+
+                                          }
+
+                                        }
+                                      },
+                                      child: Align(
+                                        child: Container(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text("Next", style: TextStyle(fontSize: 15, color: Colors.white),),
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Icon(Icons.arrow_forward, color: Colors.white,)
+                                            ],
                                           ),
-                                          Text("Next", style: TextStyle(fontSize: 15, color: Colors.white),),
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Icon(Icons.arrow_forward, color: Colors.white,)
-                                        ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ],
-                        SizedBox(
-                          height: 40,
-                        )
+                            ],
+                          
+                          ],
+                        ),
+
                       ],
                     ),
                   ),
+
+
                 ],
               ),
             ),

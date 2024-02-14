@@ -329,17 +329,13 @@ class _AddReceiverPersonalInfoMore2State extends State<AddReceiverPersonalInfoMo
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                height: 50,
-                              )
+
                             ],
                           ),
                         ],
                       )),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                ),
+
 
               ],
             ),
