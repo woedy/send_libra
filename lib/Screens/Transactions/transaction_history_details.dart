@@ -453,7 +453,7 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> wit
                         ],
 
 
-                        Column(
+                /*        Column(
                           children: [
                             Container(
                               margin: EdgeInsets.symmetric(vertical: 10),
@@ -557,11 +557,8 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> wit
                                 ],
                               ),
                             ),
-
-
-
                           ],
-                        ),
+                        ),*/
 
                         SizedBox(
                           height: 20,
