@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:send_libra/Screens/SendMoney/QuickSend/confirm_transaction.dart';
+import 'package:send_libra/Screens/SendMoney/SendNormal/select_payment_screen.dart';
 import 'package:send_libra/Screens/SendMoney/models/create_transaction_model.dart';
 import 'package:send_libra/Screens/SendMoney/send_money_dialog_box1.dart';
 import 'package:send_libra/Screens/SendMoney/send_money_dialog_box_quick_send.dart';
@@ -389,9 +390,24 @@ class _QuickSendMoneyScreenState extends State<QuickSendMoneyScreen> with Single
                                     lname: widget.lname.toString(),
                                     benef_id: widget.beneficiary_id,
                                     onCountdownComplete: () {
-                                      setState(() {
+
+
+
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SelectPaymentScreen(
+                                        data: _data,
+                                        beneficiary_id: widget.beneficiary_id,
+                                        fname: widget.fname,
+                                        lname: widget.lname,
+                                        phone: widget.phone,
+                                        avatar: widget.avatar,
+
+
+
+                                      )));
+
+                                 /*     setState(() {
                                         _futureCreateTransaction = createTransaction(_data);
-                                      });
+                                      });*/
                                     },
                                   );
                                 },

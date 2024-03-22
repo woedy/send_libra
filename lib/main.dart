@@ -17,6 +17,7 @@ import 'package:send_libra/test_home.dart';
 import 'package:uni_links/uni_links.dart';
 
 import 'Components/theme.dart';
+import 'Screens/SendMoney/QuickSend/quick_send_money_screen.dart';
 import 'Screens/UserProfile/EditProfileInside/edit_profile_country_3.dart';
 
 
@@ -95,6 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
 
           return api_key == null ? SplashScreen() : HomeScreen();
+        /*  return QuickSendMoneyScreen(
+            fname: "Etor", beneficiary_id: "fdsfsdsdfds", lname: "Asamoah", phone: "023432344", avatar: "erretret",
+          );*/
 
         });
   }
