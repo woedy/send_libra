@@ -96,6 +96,10 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
 
           return api_key == null ? SplashScreen() : HomeScreen();
+
+          //////////
+          //Test Data
+          ///////////
         /*  return QuickSendMoneyScreen(
             fname: "Etor", beneficiary_id: "fdsfsdsdfds", lname: "Asamoah", phone: "023432344", avatar: "erretret",
           );*/
