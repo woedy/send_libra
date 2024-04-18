@@ -8,6 +8,7 @@ import 'package:send_libra/Screens/SendMoney/QuickSend/confirm_transaction.dart'
 import 'package:send_libra/Screens/SendMoney/models/create_transaction_model.dart';
 import 'package:send_libra/Screens/SendMoney/models/payment_instruction_model.dart';
 import 'package:send_libra/Screens/SendMoney/resend_money_dialog_box.dart';
+import 'package:send_libra/Screens/Transactions/generate_pdf.dart';
 import 'package:send_libra/Screens/Transactions/to_world_pay.dart';
 import 'package:send_libra/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -680,8 +681,28 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> wit
                                         child: Material(
                                           color: Colors.transparent,
                                           child: InkWell(
-                                            onTap: () {
-                                              //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddReceiverPersonalInfoMore()));
+                                            onTap: () async {
+
+                                              var _username =  await getUserIDPref();
+
+                                              var _data = {
+                                                "username": _username,
+                                                "transaction_type": "Mobile Transfer",
+                                                "beneficiary_id": widget.data.benefId,
+                                                "source_currency": "GBP",
+                                                "destination_currency": "GHS",
+                                                "amount_type": "SOURCE",
+                                                "amount": widget.data.sourceAmount.toString(),
+                                                "purpose": "Family Support",
+                                                "source_of_income":"",
+                                                "payment_method": 11,
+                                                "payment_token":"",
+                                                "service_level": 1
+                                              };
+
+
+
+                                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfGeneratePage(data: _data,)));
 
                                             },
                                             child: Align(

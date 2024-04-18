@@ -65,6 +65,8 @@ dependencies:
   mailer:
   otp_text_field:
   uni_links:
+  pdf:
+  external_path:
 
 
 dev_dependencies:
