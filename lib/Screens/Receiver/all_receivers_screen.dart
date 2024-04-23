@@ -133,237 +133,244 @@ class _AllReceiversScreenState extends State<AllReceiversScreen> with SingleTick
 
               return Scaffold(
                 body: SafeArea(
-                  child: SingleChildScrollView(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    child: SingleChildScrollView(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height,
 
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                            child:    InkWell(
-                              onTap: (){
-                                Navigator.pop(context);
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(10),
-                                margin: EdgeInsets.all(0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                      color: libraPrimary,
-                                      width: 1,
-                                    ),
-                                    color: clay
+                        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                              child:    InkWell(
+                                onTap: (){
+                                  Navigator.pop(context);
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(0),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: libraPrimary,
+                                        width: 1,
+                                      ),
+                                      color: clay
+                                  ),
+                                  child: Icon(Icons.arrow_back, color: Colors.white,),
                                 ),
-                                child: Icon(Icons.arrow_back, color: Colors.white,),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-
-                          Text.rich(TextSpan(
-                            text: "Send Money",
-                            style: TextStyle(
-                              fontSize: 75,
+                            SizedBox(
+                              height: 20,
                             ),
-                          )),
 
-                          SizedBox(
-                            height: 20,
-                          ),
+                            Text.rich(TextSpan(
+                              text: "Send Money",
+                              style: TextStyle(
+                                fontSize: 75,
+                              ),
+                            )),
 
-                          Text("Select your beneficiaries", style: TextStyle(fontSize: 36),),
-                          SizedBox(
-                            height: 20,
-                          ),
+                            SizedBox(
+                              height: 20,
+                            ),
 
-                          InkWell(
-                            onTap: (){
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      AddReceiver1()));
-                            },
-                            child: Row(
+                            Text("Select your beneficiaries", style: TextStyle(fontSize: 36),),
+                            SizedBox(
+                              height: 20,
+                            ),
+
+                            InkWell(
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        AddReceiver1()));
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.all(25),
+                                        decoration: BoxDecoration(
+                                            color: clay.withOpacity(0.3),
+                                            borderRadius: BorderRadius.circular(10)
+
+                                        ),
+                                        child: Center(
+                                          child: Icon(Icons.add, color: Colors.white,),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                          width: 20
+                                      ),
+                                      Text("Create new beneficiary", style: (TextStyle(fontSize: 15)),),
+                                    ],
+                                  ),
+                                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 12,)
+
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
-                                    Container(
-                                      padding: EdgeInsets.all(25),
-                                      decoration: BoxDecoration(
-                                          color: clay.withOpacity(0.3),
-                                          borderRadius: BorderRadius.circular(10)
+                                    if(widget.image.toString() == "" || widget.image.toString() == null)...[
+                                      Container(
+                                        height: 82,
+                                        width: 82,
+                                        decoration: BoxDecoration(
+                                            color: libraBlue,
+                                            borderRadius: BorderRadius.circular(10)
+                                        ),
+                                        child: Center(
+                                          child: Text(widget.user_init, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),),
+                                        ),
+                                      ),
+                                    ]else...[
+                                      Container(
+                                        height: 82,
+                                        width: 82,
+                                        decoration: BoxDecoration(
+                                            color: libraBlue,
+                                            borderRadius: BorderRadius.circular(15),
+                                          image: DecorationImage(
+                                            image: MemoryImage(widget.image)
+                                          )
+                                        ),
 
                                       ),
-                                      child: Center(
-                                        child: Icon(Icons.add, color: Colors.white,),
-                                      ),
-                                    ),
+                                    ],
                                     SizedBox(
                                         width: 20
                                     ),
-                                    Text("Create new beneficiary", style: (TextStyle(fontSize: 15)),),
+                                    Text("Me", style: (TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios, color: Colors.white, size: 12,)
 
                               ],
                             ),
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  if(widget.image.toString() == "" || widget.image.toString() == null)...[
-                                    Container(
-                                      height: 82,
-                                      width: 82,
-                                      decoration: BoxDecoration(
-                                          color: libraBlue,
-                                          borderRadius: BorderRadius.circular(10)
+
+                            Expanded(
+                              child: Container(
+                                height: MediaQuery.of(context).size.height,
+                                child: ListView.builder(
+                                  itemCount: data.data!.length,
+                                    itemBuilder: (context, index){
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 20,
                                       ),
-                                      child: Center(
-                                        child: Text(widget.user_init, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),),
-                                      ),
-                                    ),
-                                  ]else...[
-                                    Container(
-                                      height: 82,
-                                      width: 82,
-                                      decoration: BoxDecoration(
-                                          color: libraBlue,
-                                          borderRadius: BorderRadius.circular(15),
-                                        image: DecorationImage(
-                                          image: MemoryImage(widget.image)
-                                        )
-                                      ),
-
-                                    ),
-                                  ],
-                                  SizedBox(
-                                      width: 20
-                                  ),
-                                  Text("Me", style: (TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),),
-                                ],
-                              ),
-                              Icon(Icons.arrow_forward_ios, color: Colors.white, size: 12,)
-
-                            ],
-                          ),
+                                      InkWell(
+                                        onTap: (){
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SendMoneyScreen(
+                                            beneficiary_id: data.data![index].beneficiaryId,
+                                            fname: data.data![index].fname,
+                                            lname: data.data![index].lname,
+                                            nickname: data.data![index].nickname,
+                                            phone: data.data![index].mobile,
+                                            avatar: data.data![index].avatarContent!.trim().toString(),
+                                          )));
 
 
-                          Container(
-                            height: MediaQuery.of(context).size.height,
-                            child: ListView.builder(
-                              itemCount: data.data!.length,
-                                itemBuilder: (context, index){
-                              return Column(
-                                children: [
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  InkWell(
-                                    onTap: (){
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SendMoneyScreen(
-                                        beneficiary_id: data.data![index].beneficiaryId,
-                                        fname: data.data![index].fname,
-                                        lname: data.data![index].lname,
-                                        nickname: data.data![index].nickname,
-                                        phone: data.data![index].mobile,
-                                        avatar: data.data![index].avatarContent!.trim().toString(),
-                                      )));
-
-
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            if(data.data![index].avatar == "")...[
+                                            Row(
+                                              children: [
+                                                if(data.data![index].avatar == "")...[
 
-                                              if(data.data![index].nickname == "")...[
-                                                Container(
-                                                  height: 82,
-                                                  width: 82,
-                                                  //padding: EdgeInsets.all(25),
-                                                  decoration: BoxDecoration(
-                                                      color: clay.withOpacity(0.3),
-                                                      borderRadius: BorderRadius.circular(10)
+                                                  if(data.data![index].nickname == "")...[
+                                                    Container(
+                                                      height: 82,
+                                                      width: 82,
+                                                      //padding: EdgeInsets.all(25),
+                                                      decoration: BoxDecoration(
+                                                          color: clay.withOpacity(0.3),
+                                                          borderRadius: BorderRadius.circular(10)
+
+                                                      ),
+                                                      child: Center(child: Text(
+                                                        data.data![index].fname.toString().substring(0, 1)
+                                                            + " " +
+                                                            data.data![index].lname.toString().substring(0, 1),
+                                                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)
+                                                        ,)),
+                                                    ),
+                                                  ]else...[
+                                                    Container(
+                                                      height: 82,
+                                                      width: 82,
+                                                      //padding: EdgeInsets.all(25),
+                                                      decoration: BoxDecoration(
+                                                          color: clay.withOpacity(0.3),
+                                                          borderRadius: BorderRadius.circular(10)
+
+                                                      ),
+                                                      child: Center(child: Text(
+                                                        data.data![index].nickname.toString().substring(0, 1),
+                                                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)
+                                                        ,)),
+                                                    ),
+                                                  ]
+
+                                                ]else...[
+                                                  Container(
+                                                    height: 82,
+                                                    width: 82,
+                                                    //margin: EdgeInsets.symmetric(horizontal: 10),
+                                                    decoration: BoxDecoration(
+                                                        color: libraLight.withOpacity(0.3),
+                                                        borderRadius: BorderRadius.circular(15),
+                                                        image: DecorationImage(
+                                                          image: MemoryImage(base64Decode(data.data![index].avatarContent!.trim().toString())), fit: BoxFit.cover,
+                                                        )
+                                                    ),
 
                                                   ),
-                                                  child: Center(child: Text(
-                                                    data.data![index].fname.toString().substring(0, 1)
-                                                        + " " +
-                                                        data.data![index].lname.toString().substring(0, 1),
-                                                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)
-                                                    ,)),
+                                                ],
+
+                                                SizedBox(
+                                                    width: 20
                                                 ),
-                                              ]else...[
-                                                Container(
-                                                  height: 82,
-                                                  width: 82,
-                                                  //padding: EdgeInsets.all(25),
-                                                  decoration: BoxDecoration(
-                                                      color: clay.withOpacity(0.3),
-                                                      borderRadius: BorderRadius.circular(10)
+                                                if(data.data![index].nickname == "")...[
+                                                  Text(data.data![index].fname.toString() + " " + data.data![index].lname.toString(), style: (TextStyle(fontSize: 15,)),),
+                                                ]else...[
+                                                  Text(data.data![index].nickname.toString(), style: (TextStyle(fontSize: 15,)),),
 
-                                                  ),
-                                                  child: Center(child: Text(
-                                                    data.data![index].nickname.toString().substring(0, 1),
-                                                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)
-                                                    ,)),
-                                                ),
-                                              ]
-
-                                            ]else...[
-                                              Container(
-                                                height: 82,
-                                                width: 82,
-                                                //margin: EdgeInsets.symmetric(horizontal: 10),
-                                                decoration: BoxDecoration(
-                                                    color: libraLight.withOpacity(0.3),
-                                                    borderRadius: BorderRadius.circular(15),
-                                                    image: DecorationImage(
-                                                      image: MemoryImage(base64Decode(data.data![index].avatarContent!.trim().toString())), fit: BoxFit.cover,
-                                                    )
-                                                ),
-
-                                              ),
-                                            ],
-
-                                            SizedBox(
-                                                width: 20
+                                                ]
+                                              ],
                                             ),
-                                            if(data.data![index].nickname == "")...[
-                                              Text(data.data![index].fname.toString() + " " + data.data![index].lname.toString(), style: (TextStyle(fontSize: 15,)),),
-                                            ]else...[
-                                              Text(data.data![index].nickname.toString(), style: (TextStyle(fontSize: 15,)),),
+                                            Icon(Icons.arrow_forward_ios, color: Colors.white, size: 12,)
 
-                                            ]
                                           ],
                                         ),
-                                        Icon(Icons.arrow_forward_ios, color: Colors.white, size: 12,)
-
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }),
-                          )
+                                      ),
+                                    ],
+                                  );
+                                }),
+                              ),
+                            )
 
 
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

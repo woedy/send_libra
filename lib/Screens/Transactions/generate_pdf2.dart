@@ -3,7 +3,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pdfLib;
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:external_path/external_path.dart';
 
 
 class PdfGeneratePage extends StatefulWidget {
@@ -16,6 +16,9 @@ class PdfGeneratePage extends StatefulWidget {
 }
 
 class _PdfGeneratePageState extends State<PdfGeneratePage> {
+
+
+
   Future<void> _generatePdf() async {
     final pdf = pdfLib.Document();
 
@@ -39,17 +42,12 @@ class _PdfGeneratePageState extends State<PdfGeneratePage> {
       ),
     );
 
-    final directory = await getExternalStorageDirectory();
-    final status = await Permission.storage.request();
-    if (status.isGranted) {
-      final file = File('${directory!.path}/${widget.data['trans_ref']}-${widget.data['beneficiary_name']}.pdf');
+    final directory = await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_DOWNLOADS);
+    final file = File('${directory}/${widget.data['trans_ref']}-${widget.data['beneficiary_name']}.pdf');
 
-      await file.writeAsBytes(await pdf.save());
+    await file.writeAsBytes(await pdf.save());
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('PDF generated')));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Permission denied')));
-    }
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('PDF generated')));
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pop(context);

@@ -130,6 +130,9 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> wit
 
   @override
   Widget build(BuildContext context) {
+
+    print("#################");
+    print(widget.data);
     return (_futureData == null) ? buildColumn() : buildFutureBuilder();
   }
 
@@ -687,17 +690,15 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> wit
 
                                               var _data = {
                                                 "username": _username,
-                                                "transaction_type": "Mobile Transfer",
+                                                "trans_ref": widget.data.transRef,
                                                 "beneficiary_id": widget.data.benefId,
+                                                "beneficiary_name": widget.data.benefName,
+                                                "beneficiary_mobile": widget.data.benefMobile,
                                                 "source_currency": "GBP",
                                                 "destination_currency": "GHS",
-                                                "amount_type": "SOURCE",
                                                 "amount": widget.data.sourceAmount.toString(),
                                                 "purpose": "Family Support",
-                                                "source_of_income":"",
-                                                "payment_method": 11,
-                                                "payment_token":"",
-                                                "service_level": 1
+                                                "transaction_date": widget.data.creationDate
                                               };
 
 
