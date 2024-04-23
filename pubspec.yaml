@@ -67,7 +67,6 @@ dependencies:
   uni_links:
   pdf:
   external_path:
-  pdf/widgets.dart:
   permission_handler:
 
 
