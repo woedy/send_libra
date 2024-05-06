@@ -29,11 +29,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>To let you take photos and videos within the app for various purposes.</string>
+	<string>This app requires access to your camera to allow you to take photos, such as a profile picture and ID cards of the user.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>To enable audio recording for in-app features and communication purposes.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires access to the photo library.</string>
+	<string>This app requires access to your photo library to allow you to take photos, such as a profile picture and ID cards of the user.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
